@@ -1,0 +1,16 @@
+<object-stream>
+  <lj.generator.GeneratorModel>
+    <packageName>collect</packageName>
+    <tableName>viequipmentcollect</tableName>
+    <indexName>equipmentCollectId</indexName>
+    <dirCore>G:\projects\pllm备份\pllm-core</dirCore>
+    <dirWeb>G:\projects\pllm备份\pllm-web</dirWeb>
+    <queryFields>equipmentCollectId;userProductLineId;userProductLineName;userEquipmentId;equipmentId;equipmentName;groupId;groupName;equipmentParamId;paraName;paramType;paramUp;paramDown;collectTime;paramState;paramValue</queryFields>
+    <isModel>true</isModel>
+    <isIDao>true</isIDao>
+    <isDao>true</isDao>
+    <isService>true</isService>
+    <isController>true</isController>
+    <isPage>true</isPage>
+  </lj.generator.GeneratorModel>
+</object-stream>

@@ -1,0 +1,1 @@
+1.QueryContext的使用方式有误。

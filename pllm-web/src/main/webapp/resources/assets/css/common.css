@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "宋体";
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden;*/
+}
+/*各浏览器显示不同，去掉蓝色边框*/
+fieldset, img, input, button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;!important;
+    cursor: pointer;
+}
+/*清除浮动*/
+.clear-both:before, .clear-both:after {
+    display: table;
+    content: "";
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+}
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+/*headerr开始*/
+.headerr{
+    width: 100%;
+    height: 80px;
+    background:#A9A9A9;
+    padding:0 20px;
+    min-width: 1366px;
+}
+.headerr>.headerr_logo{
+    padding:10px 10px 10px 0px;
+}
+.headerr>.headerr_logo>a{
+    display: block;
+}
+.headerr>.headerr_logo>a>img{
+    width:260px;
+}
+
+.headerr>.headerr_nav{
+    margin-left: 20px;
+}
+.headerr>.headerr_nav>ul>li{
+    float: left;
+    margin-right: 6px;
+    position: relative;
+}
+.headerr>.headerr_nav>ul>li>a{
+    display: block;
+    height: 80px;
+    padding:0 10px 0 30px;
+    line-height: 80px;
+    color:#fff;
+}
+.headerr>.headerr_nav>ul>li>a:hover{
+    border-bottom: 4px solid #4b8df8;
+}
+.headerr>.headerr_nav>ul>li>img{
+    float: left;
+    position: absolute;
+    top: 33px;
+    left:10px;
+}
+.headerr>.headerr_nav>ul>li>a.nav_current{
+    border-bottom: 4px solid #4b8df8;
+}
+
+
+/* 二级菜单 开始 */
+.headerr>.headerr_nav>ul>li>ul>li>a{
+    display: block;
+    padding:8px 10px;
+    background-color: #030829;
+    color:#fff;
+    font-size: 14px;
+}
+.headerr>.headerr_nav>ul>li>ul{
+    display: none;
+    width: 100px;
+    position: absolute;
+    top:80px;
+    left: 0px;
+    z-index: 1000;
+}
+.headerr>.headerr_nav>ul>li>ul>li>a:hover{
+    background-color: #4b8df8;
+}
+.headerr>.headerr_nav>ul>li>ul>li{
+    position: relative;
+    z-index: 1000;
+}
+.headerr>.headerr_nav>ul>li>ul>li>ul{
+    display: none;
+    width: 100px;
+    position: absolute;
+    top:0;
+    left: 100px;;
+}
+.headerr>.headerr_nav>ul>li>ul>li>ul>li>a{
+    display: block;
+    padding:8px 10px;
+    background-color: #030829;
+    color:#fff;
+    font-size: 14px;
+}
+.headerr>.headerr_nav>ul>li>ul>li>ul>li>a:hover{
+    background-color: #4b8df8;
+}
+/* 二级菜单 结束 */
+
+/* headerr结束  */
+
+
+

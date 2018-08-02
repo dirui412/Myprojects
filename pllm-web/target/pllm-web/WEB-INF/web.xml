@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	
+	<!-- 根目录 -->
+	<context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>web.root</param-value>
+    </context-param>
+    
+	<!-- Spring应用层容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:beans.xml</param-value>
+	</context-param>
+	
+	<!-- 第1个listener,获得Web根目录 -->
+	<listener>	    
+	    <listener-class> 
+            org.springframework.web.util.WebAppRootListener
+        </listener-class>
+	</listener>
+
+	<!-- 第2个listener,初始化应用程序-->
+	<listener>	    
+	    <listener-class> 
+           lj.listener.InitListener
+        </listener-class>
+	</listener>
+	
+	<!-- 第3个listener,创建Spring的监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 字符处理 -->
+	<filter>
+		<filter-name>CharacterFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>forceEncoding</param-name>
+		    <param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 第一个Servlet，拦截所有请求-->
+	<servlet>
+		<servlet-name>pllm</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 控制层容器 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/springmvc-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+		    <location>/uploads</location>
+		    <max-file-size>2097152</max-file-size>
+		    <max-request-size>4194304</max-request-size>
+		</multipart-config>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>pllm</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	
+</web-app>

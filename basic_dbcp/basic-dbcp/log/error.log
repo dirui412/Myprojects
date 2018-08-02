@@ -1,0 +1,148 @@
+17:19:01.358 ERROR lj.util.LogUtils 30 logError - FreeMarkerUtils.generateString:java.io.FileNotFoundException: Template "entityClass.ftl" not found.
+17:19:55.340 ERROR lj.util.LogUtils 30 logError - FreeMarkerUtils.generateString:java.io.FileNotFoundException: Template "entityClass.ftl" not found.
+17:21:07.209 ERROR lj.util.LogUtils 30 logError - FreeMarkerUtils.generateString:java.io.FileNotFoundException: \entityClass.ftl\UserInfo.java (系统找不到指定的路径。)
+17:21:56.391 ERROR lj.util.LogUtils 30 logError - FreeMarkerUtils.generateString:java.io.FileNotFoundException: \generator\UserInfo.java (系统找不到指定的路径。)
+17:31:22.199 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:java.io.FileNotFoundException: G:\00_workspace\02_eclipseEE\eclipseEE4.5.2\basic-dbcp\generator\UserInfo.java (系统找不到指定的路径。)
+17:32:27.263 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:java.io.IOException: 系统找不到指定的路径。
+17:35:50.085 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:java.io.IOException: 系统找不到指定的路径。
+17:37:02.638 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> packageName  [in template "entityClass.ftl" at line 1, column 11]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${packageName}  [in template "entityClass.ftl" at line 1, column 9]
+17:38:48.781 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> packageName  [in template "entityClass.ftl" at line 1, column 11]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${packageName}  [in template "entityClass.ftl" at line 1, column 9]
+17:39:38.781 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.UnexpectedTypeException: For "." left-hand operand: Expected a hash, but this evaluated to a string (wrapper: f.t.SimpleScalar):
+==> e  [in template "entityClass.ftl" at line 5, column 26]
+
+The failing instruction:
+==> ${e.fieldName}  [in template "entityClass.ftl" at line 5, column 24]
+17:53:58.964 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> e.fieldName  [in template "entityClass.ftl" at line 5, column 26]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${e.fieldName}  [in template "entityClass.ftl" at line 5, column 24]
+17:55:44.581 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> e.fieldName  [in template "entityClass.ftl" at line 5, column 26]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${e.fieldName}  [in template "entityClass.ftl" at line 5, column 24]
+17:58:10.791 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> e.fieldName  [in template "entityClass.ftl" at line 5, column 26]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${e.fieldName}  [in template "entityClass.ftl" at line 5, column 24]
+19:00:22.042 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> field.fieldType  [in template "entityClass.ftl" at line 5, column 19]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${field.fieldType}  [in template "entityClass.ftl" at line 5, column 17]
+19:01:06.871 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> field.fieldType  [in template "entityClass.ftl" at line 5, column 19]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${field.fieldType}  [in template "entityClass.ftl" at line 5, column 17]
+19:09:22.930 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> e  [in template "entityClass.ftl" at line 7, column 39]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${e.fieldName}  [in template "entityClass.ftl" at line 7, column 37]
+19:09:57.663 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.NonBooleanException: For "#if" condition: Expected a boolean, but this evaluated to a number (wrapper: f.t.SimpleNumber):
+==> fields?size  [in template "entityClass.ftl" at line 21, column 64]
+
+The failing instruction:
+==> #if fields?size  [in template "entityClass.ftl" at line 21, column 59]
+20:01:46.232 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> interfaceName  [in template "EntityDaoInterface.ftl" at line 6, column 20]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${interfaceName}  [in template "EntityDaoInterface.ftl" at line 6, column 18]
+20:02:35.053 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> daoInterfaceName  [in template "EntityDaoInterface.ftl" at line 6, column 20]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${daoInterfaceName}  [in template "EntityDaoInterface.ftl" at line 6, column 18]
+20:03:45.173 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> daoInterfaceName  [in template "EntityDaoInterface.ftl" at line 6, column 20]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${daoInterfaceName}  [in template "EntityDaoInterface.ftl" at line 6, column 18]
+20:04:12.102 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> daoInterfaceName  [in template "EntityDaoInterface.ftl" at line 6, column 20]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${daoInterfaceName}  [in template "EntityDaoInterface.ftl" at line 6, column 18]
+20:04:26.603 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> daoInterfaceName  [in template "EntityDaoInterface.ftl" at line 6, column 20]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> ${daoInterfaceName}  [in template "EntityDaoInterface.ftl" at line 6, column 18]
+20:35:14.247 ERROR lj.util.LogUtils 44 logError - JdbcDao.getConnection():org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+20:35:14.252 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+20:52:15.325 ERROR lj.util.LogUtils 44 logError - JdbcDao.getConnection():org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+20:52:15.326 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+20:54:19.923 ERROR lj.util.LogUtils 44 logError - JdbcDao.getConnection():org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+20:54:19.925 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+20:55:44.865 ERROR lj.util.LogUtils 44 logError - JdbcDao.getConnection():org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+20:55:44.866 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+20:55:45.024 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:java.io.IOException: 系统找不到指定的路径。
+20:55:45.028 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:java.io.IOException: 系统找不到指定的路径。
+12:59:39.721 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'greentravel.planroutesetp' doesn't exist
+12:59:39.723 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+13:00:08.197 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'greentravel.planroutesetp' doesn't exist
+13:00:08.199 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+15:19:28.360 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> fields  [in template "EntityDao.ftl" at line 30, column 62]
+
+Tip: If the failing expression is known to be legally null/missing, either specify a default value with myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthessis: (myOptionVar.foo)!myDefault, (myOptionVar.foo)??
+
+The failing instruction:
+==> #list fields as e  [in template "EntityDao.ftl" at line 30, column 55]
+10:35:21.375 ERROR lj.util.LogUtils 44 logError - FreeMarkerUtils.generateString:java.io.FileNotFoundException: Template "PageList.fgl" not found.
+10:00:30.303 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'greentravel.vimangerline' doesn't exist
+10:00:30.381 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+10:00:30.604 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'greentravel.vimangerline' doesn't exist
+10:00:30.605 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+10:00:30.616 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'greentravel.vimangerline' doesn't exist
+10:00:30.617 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+17:50:45.523 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'GreenTravel.ViGroupInfo' doesn't exist
+17:50:45.533 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
+17:50:45.783 ERROR lj.util.LogUtils 44 logError - getResultSetMetaData:com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'GreenTravel.ViGroupInfo' doesn't exist
+17:50:45.784 ERROR lj.util.LogUtils 44 logError - generatorEntityClass:java.lang.NullPointerException
