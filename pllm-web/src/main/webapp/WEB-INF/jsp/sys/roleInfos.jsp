@@ -533,7 +533,7 @@
 				strData = strData + "&moduleIds="
 						+ optionalModuleIds[index].value;
 			}
-		//alert(strData);
+		//alert(strData);重复提交问题已经解决
 		$.ajax({
 			type : "post",
 			url : "../sys/rolePrivs/postRolePrivs",
