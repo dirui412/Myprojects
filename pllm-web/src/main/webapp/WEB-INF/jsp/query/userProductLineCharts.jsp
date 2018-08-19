@@ -94,6 +94,17 @@
 							</tr>
 						</table>
 					</div>
+					<!-- 热区div -->
+					<div id="infoBoxHolderOut" hidden="hidden" style="position:absolute; padding:5px;border: 4px solid #BBB;
+						 	border-radius: 4px;background-color: #F5F5F5;font: 12px helvetica, sans-serif;">
+		   				<div class="title" style="background-color: lightblue;padding:7px; text-align: center;  font: bold 18px sans-serif;">设备实时参数
+		   				</div>
+		   				<div id="infoBoxHolderDiv" style="width: 100%; overflow: hidden; display: inline-block; background-color:#444444;
+		   					    color: #F5F5F5; font: bold 14px helvetica, sans-serif">
+		   					<table id="infoBoxHolder" style="border-collapse: separate;border-spacing: 8px;background-color: transparent;text-align:center">
+		   					</table>
+		   				</div>
+		   			</div>
 				</div>
 			</div>
 		</div>

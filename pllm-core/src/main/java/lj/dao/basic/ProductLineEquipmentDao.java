@@ -132,7 +132,7 @@ public class ProductLineEquipmentDao extends JdbcDao<ProductLineEquipment> imple
 	}
 	
 	/**
-	 * 更新角色权限
+	 * 更新设备生产线
 	 */
 	@Override
 	public String updateProductLineEquipments(Long productLineId,Long[] equipmentIds){
@@ -141,10 +141,9 @@ public class ProductLineEquipmentDao extends JdbcDao<ProductLineEquipment> imple
 		if(equipmentIds==null || equipmentIds.length<=0)
 		{
 			String sql="delete from ProductLineEquipment where productLineId=:productLineId";
-			int ret=this.execute(sql, "productLineId", productLineId);
+			this.execute(sql, "productLineId", productLineId);
 			return StringUtils.STR_EMPTY;
 		}
-		
 		//1-删除没有选定的生产线设备
 		String sql="delete from ProductLineEquipment where productLineId=:productLineId and equipmentId not in (:equipmentIds) ";
 		Map<String,Object> params=new HashMap<String,Object>();
@@ -154,13 +153,15 @@ public class ProductLineEquipmentDao extends JdbcDao<ProductLineEquipment> imple
 		//2-查询已经存在的生产线设备
 		sql="select * from ProductLineEquipment where productLineId=:productLineId and equipmentId in (:equipmentIds) ";
 		List<ProductLineEquipment> existProductLineEquipments=this.findAll(sql,params);
-		List<Long> existsEquipmentIds=new ArrayList<Long>();
+		List<Long> existsEquipmentIdsList=new ArrayList<Long>();
 		for(ProductLineEquipment temp:existProductLineEquipments)
-			existsEquipmentIds.add(temp.getEquipmentId());
+			existsEquipmentIdsList.add(temp.getEquipmentId());
+		Long[] existsEquipmentIds = existsEquipmentIdsList.toArray(new Long[0]);
+		Arrays.sort(existsEquipmentIds);			//Attention！使用Array的二分查找方法必须先使用sort函数对其进行排序
 		//3-新增不存在的生产线设备
 		List<Long> newIds=new ArrayList<Long>();
 		for(Long equipmentId:equipmentIds)
-			if(Arrays.binarySearch(existsEquipmentIds.toArray(new Long[0]), equipmentId)<0)
+			if(Arrays.binarySearch(existsEquipmentIds, equipmentId)<0)
 				newIds.add(equipmentId);
 		for(Long equipmentId:newIds)
 		{

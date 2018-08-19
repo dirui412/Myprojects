@@ -81,13 +81,15 @@ public class UserRoleDao extends JdbcDao<UserRole> implements IUserRoleDao {
 			//2-查询已经存在的角色权限
 			sql="select * from UserRole where userId=:userId and roleId in (:roleIds) ";
 			List<UserRole> existUserRoles=this.findAll(sql,params);
-			List<Long> existsRoleIds=new ArrayList<Long>();
+			List<Long> existsRoleIdsList=new ArrayList<Long>();
 			for(UserRole temp:existUserRoles)
-				existsRoleIds.add(temp.getRoleId());
+				existsRoleIdsList.add(temp.getRoleId());
+			Long[] existsRoleIds=existsRoleIdsList.toArray(new Long[0]);
+			Arrays.sort(existsRoleIds);			//Attention！使用Array的二分查找方法必须先使用sort函数对其进行排序
 			//3-新增不存在的角色权限
 			List<Long> newList=new ArrayList<Long>();
 			for(Long roleId:roleIds)
-				if(Arrays.binarySearch(existsRoleIds.toArray(new Long[0]), roleId)<0)
+				if(Arrays.binarySearch(existsRoleIds, roleId)<0)
 					newList.add(roleId);
 			for(Long roleId:newList)
 			{

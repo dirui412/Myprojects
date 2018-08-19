@@ -82,34 +82,49 @@ public class RolePrivDao extends JdbcDao<RolePriv> implements IRolePrivDao {
 	@Override
 	public String updateRolePrivs(long roleId,Long[] moduleIds){
 		String msg=StringUtils.STR_EMPTY;
-		//1-删除不在moduleIds的角色权限
-		String sql="delete from RolePriv where roleId=:roleId and moduleId not in (:moduleIds) ";
-		Map<String,Object> params=new HashMap<String,Object>();
-		params.put("roleId", roleId);
-		params.put("moduleIds", Arrays.asList(moduleIds));
-		int count=this.execute(sql, params);
-		//System.out.println("updateRolePrivs delete count:"+count);
-		//2-查询已经存在的角色权限
-		sql="select * from RolePriv where roleId=:roleId and moduleId in (:moduleIds) ";
-		List<RolePriv> existRolePrivs=this.findAll(sql,params);
-		Set<Long> existsModuleIdList=new HashSet<Long>();
-		for(RolePriv temp:existRolePrivs)
-			existsModuleIdList.add(temp.getModuleId());
-		Long[] existsModuleIds=existsModuleIdList.toArray(new Long[0]);
-		//System.out.println("updateRolePrivs exist count:"+existsModuleIds.length);
-		//3-新增不存在的角色权限
-		List<Long> newList=new ArrayList<Long>();
-		for(long moduleId:moduleIds)
-			if(Arrays.binarySearch(existsModuleIds, moduleId)<0){
-				//System.out.println("updateRolePrivs not in moduleId:"+moduleId);
-				newList.add(moduleId);
+		if(moduleIds!=null){
+			//1-删除不在moduleIds的角色权限
+			String sql="delete from RolePriv where roleId=:roleId and moduleId not in (:moduleIds) ";
+			Map<String,Object> params=new HashMap<String,Object>();
+			params.put("roleId", roleId);
+			params.put("moduleIds", Arrays.asList(moduleIds));
+			this.execute(sql, params);
+			//System.out.println("updateRolePrivs delete count:"+count);
+			//2-查询已经存在的角色权限
+			sql="select * from RolePriv where roleId=:roleId and moduleId in (:moduleIds) ";
+			List<RolePriv> existRolePrivs=this.findAll(sql,params);
+			Set<Long> existsModuleIdList=new HashSet<Long>();
+			for(RolePriv temp:existRolePrivs)
+				existsModuleIdList.add(temp.getModuleId());
+			Long[] existsModuleIds=existsModuleIdList.toArray(new Long[0]);
+			Arrays.sort(existsModuleIds);			//Attention！使用Array的二分查找方法必须先使用sort函数对其进行排序
+			System.out.println("已经存在的模块： ");
+			for(int i=0; i<existsModuleIds.length; i++){
+				System.out.println(existsModuleIds[i]+",");
 			}
-		for(Long moduleId:newList)
-		{
-			RolePriv obj=new RolePriv(null,roleId,moduleId);
-			long newId=this.insert(obj);
-			if(newId<0)
-				return BaseServiceConst.MSG_UPDATE_FAIL;
+			//System.out.println("updateRolePrivs exist count:"+existsModuleIds.length);
+			//3-新增不存在的角色权限
+			List<Long> newList=new ArrayList<Long>();
+			for(long moduleId:moduleIds){
+				System.out.println("页面传送的模块: "+moduleId);
+				if(Arrays.binarySearch(existsModuleIds, moduleId)<0){
+					System.out.println("即将添加的模块： "+moduleId);
+					newList.add(moduleId);
+				}
+			}
+			for(Long moduleId:newList)
+			{
+				RolePriv obj=new RolePriv(null,roleId,moduleId);
+				long newId=this.insert(obj);
+				if(newId<0)
+					return BaseServiceConst.MSG_UPDATE_FAIL;
+			}
+		}
+		else{
+			String sql="delete from RolePriv where roleId=:roleId";
+			Map<String,Object> params=new HashMap<String,Object>();
+			params.put("roleId", roleId);
+			this.execute(sql, params);
 		}
 		return msg;
 	}

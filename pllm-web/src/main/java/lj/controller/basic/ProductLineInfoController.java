@@ -102,7 +102,7 @@ public class ProductLineInfoController extends BaseController {
 	public @ResponseBody String postProductLineEquipments(Long productLineId, Long[] equipmentIds) {
 		String msg = "";
 		if (equipmentIds == null)
-			msg = productLineEquipmentService.updateProductLineEquipments(productLineId, new Long[0]);
+			msg = productLineEquipmentService.updateProductLineEquipments(productLineId, null);
 		else {
 			for(Long id:equipmentIds)
 				System.out.println("equipment id:"+id);

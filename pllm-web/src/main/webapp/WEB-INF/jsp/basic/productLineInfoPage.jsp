@@ -640,8 +640,6 @@
 				strData = strData + "&equipmentIds=" + control.value;
 			}
 		}
-
-		
 		$.ajax({
 			type : "post",
 			url : "../basic/postProductLineEquipments",

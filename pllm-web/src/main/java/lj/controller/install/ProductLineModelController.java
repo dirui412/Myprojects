@@ -134,7 +134,7 @@ public class ProductLineModelController extends BaseController {
 				nodeDataArray[i] = new NodeDataArray();
 				nodeDataArray[i].setText(userequipments[i].getText());
 				nodeDataArray[i].setKey(userequipments[i].getKeyy());
-				nodeDataArray[i].setHiddenId(""+userequipments[i].getEquipmentId());
+				nodeDataArray[i].setHiddenId(""+userequipments[i].getEquipmentId()+" "+userequipments[i].getUserEquipmentId());
 				nodeDataArray[i].setLoc(userequipments[i].getLoc1()+" "+userequipments[i].getLoc2());
 			}
 			myModelData.setNodeDataArray(nodeDataArray);

@@ -1,7 +1,12 @@
-$(function init()
+var lastStroked = null;  //记住最后一个高亮元素
+	var myDiagram;
+	$(function init()
 	{
 		var $ = go.GraphObject.make; // for conciseness in defining templates
-	
+		//后面为建立热区的代码：
+	    var myToolTip = $(go.HTMLInfo, { //热区
+       		show: doMouseEnter,			 //显示热区的函数Attention(此行一定不能少)
+   		});
 		myDiagram = $(go.Diagram, "myDiagramDiv", // must name or refer to the DIV HTML element
 		{
 	 	/* 		grid : $(go.Panel, "Grid", $(go.Shape, "LineH", {
@@ -81,7 +86,7 @@ $(function init()
 		// The "name" is used as the GraphObject.portId, the "spot" is used to control how links connect
 		// and where the port is positioned on the node, and the boolean "output" and "input" arguments
 		// control whether the user can draw links from or to the port.
-		//创建一个port,ID为name,spot控制其怎么被连接,放置于node的什么位置,output/input决定其哪里可以from和to
+		//创建一个port（用于连接的小灰点）,ID为name,spot控制其怎么被连接,放置于node的什么位置,output/input决定其哪里可以from和to
 		function makePort(name, spot, output, input) 
 		{
 			// the port is basically just a small transparent square
@@ -196,7 +201,9 @@ $(function init()
 		//节点模板
 		myDiagram.nodeTemplate = 
 		$(go.Node, "Spot", 
-			{locationSpot : go.Spot.Center}, 
+			{locationSpot : go.Spot.Center,
+			 toolTip: myToolTip		//该节点的热区，后面有定义
+			}, 
 			new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify), 
 			{//设置其可选择
 				selectable : true,
@@ -213,23 +220,26 @@ $(function init()
 			// the main object is a Panel that surrounds a TextBlock with a Shape ~图形：Panel包围着TextBlock
 			$(go.Panel, "Vertical", 
 				{
-					name : "PANEL"
+					name : "PANEL",					//该PANEL的名字为name，鼠标经过时寻找附近的PANEL
 				}, 
 				new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify), 
-				$(go.Shape, "Circle",	//显示operation的图形
-						{ alignment: go.Spot.TopLeft, alignmentFocus: go.Spot.TopLeft,
-						width: 12, height: 12, fill: "orange" },
-						new go.Binding("figure", "operation", nodeOperationConverter)
+				$(go.Shape, "Circle",	//显示operation的图形（形状会改变）
+						{ 
+						name:"CirclePanel",
+						alignment: go.Spot.TopLeft, alignmentFocus: go.Spot.TopLeft,
+						width: 12, height: 12, fill: "orange",
+						},
+						new go.Binding("figure", "operation", nodeOperationConverter)		//返回值为形状
 					),
-				$(go.Shape, "Triangle", //显示status的图形
-						{ alignment: go.Spot.TopRight, alignmentFocus: go.Spot.TopRight,
+				$(go.Shape, "Triangle", //显示status的三角形（颜色会改变）
+						{ alignment: go.Spot.TopRight, alignmentFocus: go.Spot.TopRight,	//返回值为颜色
 						width: 12, height: 12, fill: "blue" },
 						new go.Binding("fill", "status", nodeStatusConverter)
 				),
 				$(go.Panel, "Auto",
-					$(go.Shape,  			//显示problem故障的框
-							{ fill: null, stroke: null },
-							new go.Binding("background", "problem", nodeProblemConverter)
+					$(go.Shape,  		//显示problem故障的框
+							{fill: null,stroke: null },
+							new go.Binding("background", "problem", nodeProblemConverter)	//返回值为red或者null
 					),
 					$(go.Picture, 
 						{
@@ -246,8 +256,9 @@ $(function init()
 						new go.Binding("source", "key", findHeadShot)
 					)
 				),
-				$(go.TextBlock, {		//equipmentId隐藏框
-					stroke :"#eeeeee"
+				$(go.TextBlock, {		//equipmentId & userEquipmentId隐藏框
+					stroke :"#eeeeee",
+					name:"hiddenId"
 					}, 
 					new go.Binding("text","hiddenId").makeTwoWay()
 				),
@@ -265,20 +276,24 @@ $(function init()
 			),//end "Vertical" Panel
 		
 		
-			// four small named ports, one on each side: 设置可被链接的上下左右四个点
+			// four small named ports, one on each side: 生成可被链接的上下左右四个点
 			makePort("T", go.Spot.Top, false, true), 
 			makePort("L", go.Spot.Left,true, true), 
 			makePort("R", go.Spot.Right, true, true),
 			makePort("B", go.Spot.Bottom, true, false),
+			//!!!Attention：此代码段是作用于"Spot" Node上的
 			{ // handle mouse enter/leave events to show/hide the ports 使得鼠标离开或者进入图形时，显示四个圆点
 					mouseEnter : function(e, node) {
 					showSmallPorts(node, true);
+					doMouseEnter(e,node);
 					},
 					mouseLeave : function(e, node) {
 					showSmallPorts(node, false);
+					doMouseLeave(e);
 					}
 			}
 		);//end "Spot" Node
+		//当鼠标经过某个节点时，显示节点上的四个用户连接的小灰点
 		function showSmallPorts(node, show) 
 		{
 			node.ports.each(function(port)
@@ -498,11 +513,48 @@ $(function init()
 								new go.Point(60, 40) ])
 					} ])
 		});
-			load(); //在init()函数内部调用load()函数，加载此页面时将该条生产线的模型加载至右侧模型框中
-			looplink(); //在init()函数内部调用looplink()函数，加载此页面时连接线有流动效果
-			loop();  // start the simulation
+		load(); //在init()函数内部调用load()函数，加载此页面时将该条生产线的模型加载至右侧模型框中
+		looplink(); //在init()函数内部调用looplink()函数，加载此页面时连接线有流动效果
+		loop();  // start the simulation
+			
+   		//当鼠标悬浮于节点时，显示其热区
+	    function doMouseEnter(e,node) {
+	    	updateInfoBox(e.viewPoint,node);
+	    }
+	
+	    //当鼠标离开节点时，使热区隐藏
+	    function doMouseLeave(e) {
+	        document.getElementById("infoBoxHolderOut").hidden = "hidden";
+	    }
+
 	})//end init();
 
+	  // This function is called to update the tooltip information 用于更新tooltip（热区的值）
+	  function updateInfoBox(mousePt,node) {
+	    var boxOut = document.getElementById("infoBoxHolderOut");
+	    boxOut.removeAttribute("hidden");			//移除hidden属性，使其可见
+	    var table = document.getElementById("infoBoxHolder");
+	    table.innerHTML = "";						//清空表格中数据
+	    var newRow=table.insertRow();
+        var col1=newRow.insertCell();
+        var col2=newRow.insertCell();
+        col1.innerHTML="属性名";
+        col2.innerHTML="属性值";
+        col1.align="center";
+        col2.valign="middle";
+	    for (var i = 0; i < 6; i++) {				//用js向表格中插入数据
+	    	 var newRow=table.insertRow();
+	         var col1=newRow.insertCell();
+	         var col2=newRow.insertCell();
+	         col1.innerHTML="属性"+i;
+	         col2.innerHTML="值"+i;
+	         col1.align="center";
+	         col2.valign="middle";
+	      }
+	    boxOut.style.left = (mousePt.x-40) + "px";
+	    boxOut.style.top = (mousePt.y -300) + "px";
+	  }
+	
 	function TopRotatingTool() {
 		go.RotatingTool.call(this);
 	}
@@ -524,23 +576,16 @@ $(function init()
 	};
 	// end of TopRotatingTool class
 
-	// simulate some real-time problem monitoring, once every two seconds:
+	// simulate some real-time problem monitoring, once every two seconds: 模拟给
     function randomProblems() {
         var model = myDiagram.model;
         // update all nodes
         var arr = model.nodeDataArray;
         for (var i = 0; i < arr.length; i++) {
           data = arr[i];
-          data.problem = (Math.random() < 0.8) ? "" : "Power loss due to ...";
+          data.problem = (Math.random() < 0.7) ? "" : "Power loss due to ...";
           data.status = Math.random() * 3;
           data.operation = Math.random() * 3;
-          model.updateTargetBindings(data);
-        }
-        // and update all links
-        arr = model.linkDataArray;
-        for (i = 0; i < arr.length; i++) {
-          data = arr[i];
-          data.problem = (Math.random() < 0.7) ? "" : "No Power";
           model.updateTargetBindings(data);
         }
     }
@@ -550,7 +595,7 @@ $(function init()
     function nodeProblemConverter(msg) {
         if (msg) return "red";
         return null;
-      }
+    }
 
     function nodeOperationConverter(s) {
       if (s >= 2) return "TriangleDown";

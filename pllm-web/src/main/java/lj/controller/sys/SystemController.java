@@ -225,19 +225,24 @@ public class SystemController {
 
 	@RequestMapping(value = { "/rolePrivs/postRolePrivs" })
 	public @ResponseBody String postRolePrivs(String roleId, String[] moduleIds) {
-		String str = StringUtils.STR_EMPTY;
+		/*String str = StringUtils.STR_EMPTY;
 		for (String moduleId : moduleIds)
 			str = str + moduleId + ",";
-		System.out.println("/rolePrivs/postRolePrivs moduleIds:" + str);
+		System.out.println("/rolePrivs/postRolePrivs moduleIds:" + str);*/
 		String msg = StringUtils.STR_EMPTY;
 		try {
 			Long lRoleId = Long.parseLong(roleId);
-			Set<Long> moduleIdList = new HashSet<Long>();
-			for (String temp : moduleIds) {
-				long moduleId = Long.parseLong(temp);
-				moduleIdList.add(moduleId);
+			if(moduleIds!= null){
+				Set<Long> moduleIdList = new HashSet<Long>();
+				for (String temp : moduleIds) {
+					long moduleId = Long.parseLong(temp);
+					moduleIdList.add(moduleId);
+				}
+				msg = systemService.updateRolePrivs(lRoleId, moduleIdList.toArray(new Long[0]));
 			}
-			msg = systemService.updateRolePrivs(lRoleId, moduleIdList.toArray(new Long[0]));
+			else 
+				msg = systemService.updateRolePrivs(lRoleId,null);
+			
 		} catch (Exception e) {
 			msg = BaseServiceConst.MSG_UPDATE_FAIL;
 			e.printStackTrace();
