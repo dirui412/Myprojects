@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="assets/css/foundation-datepicker.css">
 <!-- 关于选择日期的css -->
 <!--headerr开始-->
-<div class="headerr">
+<!-- <div class="headerr">
 	<div class="headerr_nav fl">
 		<ul>
 			<li><img src="assets/img/nav_1.png" alt=""> <a href="#">数据概览</a>
@@ -21,7 +21,7 @@
 				href="../main">返回</a></li>
 		</ul>
 	</div>
-</div>
+</div> -->
 <!--headerr结束-->
 
 <!--content开始-->

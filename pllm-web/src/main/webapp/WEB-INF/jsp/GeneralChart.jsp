@@ -1,39 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="assets/css/common.css?v=20180724"> <!-- 自定义的一些全局css -->
 <link rel="stylesheet" href="assets/css/data_text.css">	<!-- 自定义的正文表格部分的css -->
 <link rel="stylesheet" href="assets/css/foundation-datepicker.css">	<!-- 关于选择日期的css -->
-<!--headerr开始-->
-<div class="headerr">
-    <div class="headerr_nav fl">
-        <ul>
-            <li>
-                <img src="assets/img/nav_1.png" alt="">
-                <a href="#">数据概览</a>
-            </li>
-            <li>
-                <img src="assets/img/nav_4.png" alt="">
-                <a href="#">参数设置</a>
-            </li>
-            <li>
-                <img src="assets/img/nav_7.png" alt="">
-                <a href="#">查询统计</a>
-            </li>
-            <li>
-                <img src="assets/img/nav_9.png" alt="">
-                <a href="../main">进入后台管理系统</a>
-            </li>
-        </ul>
-    </div>
-</div>
-<!--headerr结束-->
-
 <!--content开始-->
 <div class="data_content">
-    <div class="data_time">
-        <img src="assets/img/data.png" alt="" class="fl">
-        <input value="" id="demo-1" style="background:#F0F0F0; width: 80px;" placeholder="选择日期">
-    </div>
+	<!-- <div class="form-group"> -->
+	    <div class="data_time">
+	        <img src="assets/img/data.png" alt="" class="fl">
+	        <input value="" id="demo-1" style="background:#F0F0F0; width: 80px;" placeholder="选择日期">
+	    </div>
+	<%--     <label class="col-sm-2 control-label no-padding-right" for="queryUserProductLineId">客户生产线</label>
+		<div class="col-sm-4">
+			<select class="chosen-select form-control" id="queryUserProductLineId" name="queryUserProductLineId" required>
+				<option value=""></option>
+				<c:forEach var="item" items="${userProductLines}">
+					<option value="${item.userProductLineId}">${item.userProductLineName}</option>
+				</c:forEach>
+			</select>
+		</div>
+	</div> --%>
     <div class="data_main">
         <div class="main_left fl">
             <div class="left_1">

@@ -58,7 +58,7 @@ public class ProductLineModelController extends BaseController {
 	
 	/*
 	 *1、 将需要的userProductLineId、ViProductLineEquipments(用于显示platte)、
-	 *    productLineState(用于判断是否能够更改模型)、myModelDataStr(用于显示右边模型)
+	 *    productLineState(用于判断是否能够更改模型)、myModelDataStr(用于显示右边模型)存至model中
 	 * */
 	@RequestMapping(value = { "/productLineModel" }, method = RequestMethod.GET)
 	public String viUserEquipmentPage(Model model,Long userProductLineId,HttpServletRequest req) {

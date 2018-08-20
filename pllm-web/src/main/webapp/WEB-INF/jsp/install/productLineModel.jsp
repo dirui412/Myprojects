@@ -299,11 +299,11 @@
 			{ // handle mouse enter/leave events to show/hide the ports 使得鼠标离开或者进入图形时，显示四个圆点
 					mouseEnter : function(e, node) {
 					showSmallPorts(node, true);
-					doMouseEnter(e,node);
+					//doMouseEnter(e,node);
 					},
 					mouseLeave : function(e, node) {
 					showSmallPorts(node, false);
-					doMouseLeave(e);
+					//doMouseLeave(e);
 					}
 			}
 		);//end "Spot" Node
@@ -665,7 +665,7 @@
 			{
 				userEquipmentArray[i]  = new Object();
 				userEquipmentArray[i].userProductLineId = userProductLineId;
-				userEquipmentArray[i].equipmentId = myModel.nodeDataArray[i].hiddenId;
+				userEquipmentArray[i].equipmentId = myModel.nodeDataArray[i].hiddenId.split(" ")[0];
 				userEquipmentArray[i].text = myModel.nodeDataArray[i].text;
 				userEquipmentArray[i].keyy = myModel.nodeDataArray[i].key;
 				userEquipmentArray[i].loc1 = myModel.nodeDataArray[i].loc.split(" ")[0];

@@ -296,7 +296,7 @@
 			</script>
 			<ul class="nav nav-list">
 				<li class=""><a
-					href='javascript:showPageContent("../GeneralChart","生产线一览图")'>
+					href='javascript:showPageContent("../query/userProductLineCharts?userProductLineId=" + 42,"生产线一览图")'>
 						<i class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
 							生产线一览图</span>
 				</a> <b class="arrow"></b></li>
@@ -371,14 +371,14 @@
 		</div>
 		<!-- /.main-content -->
 
-		<div class="footer">
+	<%-- 	<div class="footer">
 			<div class="footer-inner">
 				<div class="footer-content">
 					<span class="bigger-120"> <%=AppVar.sysConfig.getSystemName()%>
 					</span>
 				</div>
 			</div>
-		</div>
+		</div> --%>
 
 		<a href="#" id="btn-scroll-up"
 			class="btn-scroll-up btn btn-sm btn-inverse"> <i
