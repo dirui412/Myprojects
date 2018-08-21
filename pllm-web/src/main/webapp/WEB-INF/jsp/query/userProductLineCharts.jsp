@@ -79,7 +79,7 @@
 						<div id="myDiagramDiv"
 							style="background-color: whitesmoke; flex-grow: 1; width: 100%; height: 600px"></div>
 					</div>
-					<!-- 隐藏域，存储从model获取的生产线设备名称 -->
+					<!-- 隐藏域，从model获取的生产线设备名称 -->
 					<div hidden="hidden" class="col-sm-4">
 						<table id="table">
 							<tr>

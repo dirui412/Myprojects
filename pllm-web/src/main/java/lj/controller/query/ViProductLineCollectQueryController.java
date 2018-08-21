@@ -71,7 +71,7 @@ public class ViProductLineCollectQueryController extends BaseController {
 
 	@RequestMapping(value = { "/viProductLineCollectQueryPage" }, method = RequestMethod.GET)
 	public String viProductLineCollectQueryPage(Model model, HttpServletRequest req) {
-		Long longGroupId = this.getLoginUser(req).getGroupId();
+		Long longGroupId = getLoginUser(req).getGroupId();
 		ViUserProductLine[] userProductLines = null;
 		if (longGroupId.equals(GroupInfoService.GROUP_ID_ADMIN) == true)
 			userProductLines = viUserProductLineService.findAll();
@@ -104,7 +104,7 @@ public class ViProductLineCollectQueryController extends BaseController {
 		MyModelData myModelData = getModelData(userProductLineId); // 调用本类中的getModelData()函数
 		String myModelDataStr = JsonUtils.objectToJson(myModelData);
 		model.addAttribute("myModelDataStr", myModelDataStr);
-		System.out.println("1111111111111111111111111:" + myModelDataStr);
+		System.out.println("ViProductLineCollectQueryController/userProductLineCharts:" + myModelDataStr);
 		return "query/userProductLineCharts";
 	}
 
@@ -120,13 +120,13 @@ public class ViProductLineCollectQueryController extends BaseController {
 		System.out.println("userProductLineParams:" + JsonUtils.objectToJson(params));
 		return params;
 	}
-
-	/**
+/*
+	*//**
 	 * 图表控制器
 	 * 
 	 * @param queryUserProductLineId
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value = { "/viProductLineCollectChart" }, method = RequestMethod.GET)
 	public @ResponseBody FlotModel viProductLineCollectChart(Long queryUserProductLineId,
 			Long queryProductLineParamId) {
@@ -137,14 +137,14 @@ public class ViProductLineCollectQueryController extends BaseController {
 				new String[] { param.getParamName() }, "xValue", "yValue");
 		System.out.println("flot model:" + JsonUtils.objectToJson(model));
 		return model;
-	}
+	}*/
 
-	/**
+/*	*//**
 	 * 图表控制器
 	 * 
 	 * @param queryUserProductLineId
 	 * @return
-	 */
+	 *//*
 	@RequestMapping(value = { "/viProductLineCollectChartAll" }, method = RequestMethod.GET)
 	public @ResponseBody FlotModel viProductLineCollectChartAll(Long queryUserProductLineId) {
 		ProductLineParam[] params = viProductLineCollectQueryService.findAllProductLineParams(queryUserProductLineId);
@@ -157,7 +157,7 @@ public class ViProductLineCollectQueryController extends BaseController {
 		FlotModel model = FlotUtils.serialsToFlot(objs, paramNames, "xValue", "yValue");
 		System.out.println("flot model:" + JsonUtils.objectToJson(model));
 		return model;
-	}
+	}*/
 
 	public MyModelData getModelData(Long userProductLineId) {
 		MyModelData myModelData = new MyModelData();
@@ -213,8 +213,8 @@ public class ViProductLineCollectQueryController extends BaseController {
 				nodeDataArray[i] = new NodeDataArray();
 				nodeDataArray[i].setText(userequipments[i].getText());
 				nodeDataArray[i].setKey(userequipments[i].getKeyy());
-				nodeDataArray[i].setHiddenId("" + userequipments[i].getEquipmentId());
-				nodeDataArray[i].setLoc(userequipments[i].getLoc1() + " " + userequipments[i].getLoc2());
+				nodeDataArray[i].setHiddenId(""+userequipments[i].getEquipmentId()+" "+userequipments[i].getUserEquipmentId());
+				nodeDataArray[i].setLoc(userequipments[i].getLoc1() + " " + userequipments[i].getLoc2());  
 			}
 			myModelData.setNodeDataArray(nodeDataArray);
 		}

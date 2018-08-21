@@ -74,7 +74,7 @@ public class ProductLineModelController extends BaseController {
 		MyModelData myModelData = getModelData(userProductLineId);		//调用本类中的getModelData()函数
 		String myModelDataStr = JsonUtils.objectToJson(myModelData);
 		model.addAttribute("myModelDataStr", myModelDataStr);
-		System.out.println("1111111111111111111111111:"+myModelDataStr);
+		System.out.println("ProductLineModelController/productLineModel:"+myModelDataStr);
 		//req.setAttribute("userProductLineId", userProductLineId);
 		return "install/productLineModel";
 	}

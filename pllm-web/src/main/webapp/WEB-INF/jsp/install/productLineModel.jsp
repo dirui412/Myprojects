@@ -665,7 +665,7 @@
 			{
 				userEquipmentArray[i]  = new Object();
 				userEquipmentArray[i].userProductLineId = userProductLineId;
-				userEquipmentArray[i].equipmentId = myModel.nodeDataArray[i].hiddenId.split(" ")[0];
+				userEquipmentArray[i].equipmentId = myModel.nodeDataArray[i].hiddenId.split(" ")[0];	//从Palette中拖拽的模型的hiddenId只有equipmentId
 				userEquipmentArray[i].text = myModel.nodeDataArray[i].text;
 				userEquipmentArray[i].keyy = myModel.nodeDataArray[i].key;
 				userEquipmentArray[i].loc1 = myModel.nodeDataArray[i].loc.split(" ")[0];

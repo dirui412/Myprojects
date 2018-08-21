@@ -296,7 +296,7 @@
 			</script>
 			<ul class="nav nav-list">
 				<li class=""><a
-					href='javascript:showPageContent("../query/userProductLineCharts?userProductLineId=" + 42,"生产线一览图")'>
+					href='javascript:showPageContent("../GeneralChart?userProductLineId=" + 42,"生产线一览图")'>
 						<i class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
 							生产线一览图</span>
 				</a> <b class="arrow"></b></li>
@@ -450,6 +450,9 @@
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	<script type="text/javascript">
+		$(function(){
+			showPageContent("../GeneralChart?userProductLineId=" + 42,"生产线一览图");
+		});
 		function showPageContent(url, title) {
 			//alert(url);
 			$.get(url, function(result) {
