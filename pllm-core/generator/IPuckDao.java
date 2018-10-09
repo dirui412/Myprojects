@@ -1,38 +1,38 @@
-package lj.dao.basic;
+package lj.dao.install;
 
 import java.util.Map;
 
 import lj.dao.base.IJdbcDao;
 import lj.model.base.Pager;
-import lj.model.basic.ViProductLineParam;
+import lj.model.install.Puck;
 
-public interface IViProductLineParamDao extends IJdbcDao<ViProductLineParam> {
+public interface IPuckDao extends IJdbcDao<Puck> {
      /**
 	 * 根据标识查询对象
 	 * @param id
 	 * @return
 	 */
-	ViProductLineParam find(Long id);
+	Puck find(Long id);
 	
 	/**
 	 * 查询所有对象
 	 * @return
 	 */
-	ViProductLineParam[] findAll();
+	Puck[] findAll();
 	
 	/**
 	 * 新增对象
 	 * @param obj
 	 * @return
 	 */
-	long insert(ViProductLineParam obj);
+	long insert(Puck obj);
 	
 	/**
 	 * 更新对象
 	 * @param obj
 	 * @return
 	 */
-	String update(ViProductLineParam obj);
+	String update(Puck obj);
 	
 	/**
 	 * 删除对象
@@ -48,7 +48,7 @@ public interface IViProductLineParamDao extends IJdbcDao<ViProductLineParam> {
      * @param sortType：排序类型(asc/desc)
      * @return
      */
-	Pager<ViProductLineParam> findAllPaged();
+	Pager<Puck> findAllPaged();
 	
 	/**
 	 * 某个字段值是否重复

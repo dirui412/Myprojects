@@ -1,4 +1,4 @@
-package lj.dao.basic;
+package lj.dao.install;
 
 import java.util.List;
 import java.util.HashMap;
@@ -14,11 +14,11 @@ import lj.service.BaseServiceConst;
 import lj.util.IntUtils;
 import lj.util.StringUtils;
 import lj.util.query.QueryObject;
-import lj.model.basic.ViProductLineParam;
+import lj.model.install.Gate;
 
 
 @Repository
-public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implements IViProductLineParamDao {
+public class GateDao extends JdbcDao<Gate> implements IGateDao {
 	
 	 /**
 	 * 根据标识查询对象
@@ -26,9 +26,9 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
 	 * @return
 	 */
 	@Override
-	public ViProductLineParam find(Long productLineParamId){
-		String sql="select * from ViProductLineParam where productLineParamId=:productLineParamId";
-		ViProductLineParam obj=this.find(sql,"productLineParamId",productLineParamId);
+	public Gate find(Long gateId){
+		String sql="select * from Gate where gateId=:gateId";
+		Gate obj=this.find(sql,"gateId",gateId);
 		return obj;
 	}
 	
@@ -36,11 +36,11 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
 	 * 查询所有对象数组
 	 */
 	@Override
-	public ViProductLineParam[] findAll()
+	public Gate[] findAll()
 	{
-		String sql="select * from ViProductLineParam";
-		List<ViProductLineParam> list=this.findAll(sql);
-		return list.toArray(new ViProductLineParam[0]);
+		String sql="select * from Gate";
+		List<Gate> list=this.findAll(sql);
+		return list.toArray(new Gate[0]);
 	}
 	
 	/**
@@ -49,10 +49,10 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
 	 * @return
 	 */
 	@Override
-	public long insert(ViProductLineParam obj){
-	    String sql="insert into ViProductLineParam() ";
-		sql=sql+" values()";
-		int intRet=this.jdbcTemplate.update(sql);
+	public long insert(Gate obj){
+	    String sql="insert into Gate(gateName,gateArriveType,gateGoType,gateVersion,priority) ";
+		sql=sql+" values(?,?,?,?,?)";
+		int intRet=this.jdbcTemplate.update(sql,obj.getGateName(),obj.getGateArriveType(),obj.getGateGoType(),obj.getGateVersion(),obj.getPriority());
 		if(intRet<=0)
 			return IntUtils.INT_FAIL;
 		long insertId=this.getNewInsertId();
@@ -63,13 +63,13 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
 	 * 更新对象
 	 */
 	@Override
-	public String update(ViProductLineParam obj){
+	public String update(Gate obj){
 		String msg = StringUtils.STR_EMPTY;
-		String sql = "update ViProductLineParam set ";
-		sql=sql+" ";
-		sql=sql+" where productLineParamId=?";
+		String sql = "update Gate set ";
+		sql=sql+" gateName=?,gateArriveType=?,gateGoType=?,gateVersion=?,priority=?";
+		sql=sql+" where gateId=?";
 		int intRet = this.jdbcTemplate.update(sql
-		,obj.getProductLineParamId());
+		,obj.getGateName(),obj.getGateArriveType(),obj.getGateGoType(),obj.getGateVersion(),obj.getPriority(),obj.getGateId());
 		if (intRet <= 0)
 			msg = BaseServiceConst.MSG_UPDATE_FAIL;
 		return msg;
@@ -82,8 +82,8 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
 	 */
 	public String delete(Long id)
 	{
-		String sql="delete from ViProductLineParam where productLineParamId=:productLineParamId";
-		int ret=this.execute(sql, "productLineParamId",id);
+		String sql="delete from Gate where gateId=:gateId";
+		int ret=this.execute(sql, "gateId",id);
 		if(ret>0)
 			return StringUtils.STR_EMPTY;
 		else
@@ -98,13 +98,13 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
      * @return
      */
 	@Override
-	public Pager<ViProductLineParam> findAllPaged(){
-		String sql="select * from ViProductLineParam";
+	public Pager<Gate> findAllPaged(){
+		String sql="select * from Gate";
 		Map<String,Object> params=new HashMap<String,Object>();
 		QueryObject query=JdbcDao.wrapperSqlWithCondition(sql,params);
 	    if(StringUtils.isNullOrEmpty(QueryContext.getSortField())==true)
-			QueryContext.setSortField("productLineParamId");
-		Pager<ViProductLineParam> pager=super.findAllPaged(query.sql, query.params);
+			QueryContext.setSortField("gateId");
+		Pager<Gate> pager=super.findAllPaged(query.sql, query.params);
 		return pager;
 	}
 	
@@ -118,11 +118,11 @@ public class ViProductLineParamDao extends JdbcDao<ViProductLineParam> implement
 	@Override
 	public boolean isRepeat(String fieldName,Object fieldValue,Long id)
 	{
-		String sql="select * from ViProductLineParam where "+fieldName+"=:"+fieldName;
-		ViProductLineParam oldObj=this.find(sql, fieldName, fieldValue);
+		String sql="select * from Gate where "+fieldName+"=:"+fieldName;
+		Gate oldObj=this.find(sql, fieldName, fieldValue);
 		if(oldObj==null)
 			return false;
-		if(oldObj.getProductLineParamId().equals(id)==true)
+		if(oldObj.getGateId().equals(id)==true)
 			return false;
 		else
 			return true;

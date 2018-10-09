@@ -84,8 +84,8 @@ public class CodeGenerator {
 		PlatformFun.preLoad();
 		// 需要设置信息
 		String parentCateogry = "install";
-		String tableName = "linkinfo";
-		String indexName = "linkId";
+		String tableName = "gate";
+		String indexName = "gateId";
 		String modelClassPath = "lj.model." + parentCateogry;
 		String daoClassPath = "lj.dao." + parentCateogry;
 		String serviceClassPath = "lj.service." + parentCateogry;
@@ -94,9 +94,9 @@ public class CodeGenerator {
 		testGenerateEntityClass(modelClassPath, tableName);
 		testGenerateDaoInterface(daoClassPath, tableName, modelClassPath);
 		testGeneratorDaoClass(daoClassPath, tableName, modelClassPath, indexName);
-		GeneratorUtils.generateServiceCode(tableName, daoClassPath, serviceClassPath, modelClassPath);
-		GeneratorUtils.generateControllerClass(modelClassPath, serviceClassPath, controllerClassPath, tableName,
-				indexName, parentCateogry);
-		testGeneratorPageList(tableName, indexName, requestUrl);
+		//GeneratorUtils.generateServiceCode(tableName, daoClassPath, serviceClassPath, modelClassPath);
+		//GeneratorUtils.generateControllerClass(modelClassPath, serviceClassPath, controllerClassPath, tableName,
+		//		indexName, parentCateogry);
+		//testGeneratorPageList(tableName, indexName, requestUrl);
 	}
 }
